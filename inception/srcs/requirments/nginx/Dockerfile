@@ -4,7 +4,7 @@ FROM debian:bullseye
 RUN apt-get -y update && apt-get -y install nginx
 
 # copy over the default site config from our local file
-COPY default /etc/nginx/sites-available/default
+COPY conf /etc/nginx/sites-available/default
 
 EXPOSE 9000/tcp
 
