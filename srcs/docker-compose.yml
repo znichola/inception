@@ -1,1 +1,5 @@
-# no idea what this is fore yet
+services:
+  nginx:
+    build: requirements/nginx
+    ports:
+      - "443:443"
