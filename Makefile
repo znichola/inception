@@ -5,7 +5,7 @@ CONTAINERS = $(shell docker ps -a -q)
 TIDY=2>/dev/null ; true
 
 up : FORCE $(ENV) 
-	docker compose -f $D up -d
+	docker compose -f $D -p inception up -d
 
 down :
 	docker compose -f $D down
@@ -14,12 +14,23 @@ clean : down
 	yes | docker container prune
 	yes | docker image     prune
 	yes | docker network   prune
+	yes | docker volume    prune
 
-fclean : down clean
+fclean : 
 	docker stop       $(CONTAINERS)                  $(TIDY)
 	docker rm         $(CONTAINERS)                  $(TIDY)
 	docker network rm $(shell docker network ls -q)  $(TIDY)
+	docker image rm   $(shell docker image ls -q)    $(TIDY)
+	docker volume rm  $(shell docker volume ls -q)   $(TIDY)
 	rm srcs/.env                                     $(TIDY)
+
+ls :
+	docker container ls
+	docker image     ls
+	docker network   ls
+	docker volume    ls
+
+re : fclean up
 
 $(ENV) :
 	@./srcs/requirements/tools/gen-env.sh

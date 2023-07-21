@@ -2,17 +2,55 @@ version: "3.8"
 
 # used for security to ensure we only have the connectios specified
 networks:
-  docker-network:
-    # name: docker-network
+  app-net:
     driver: bridge
+    name: app-net
 
+volumes:
+  wp:
+    driver: local
+    name: wp
+    driver_opts:
+      device: /home/znichola/data/wordpress
+      type: none
+      o: bind
+  db:
+    driver: local
+    name: db
+    driver_opts:
+      device: /home/znichola/data/mariadb
+      type: none
+      o: bind
 
 services:
   nginx:
     container_name: nginx
-    networks:
-      - docker-network
     build: requirements/nginx
+    networks:
+      - app-net
     ports:
       - "443:443"
+    volumes:
+      - wp:/site
 
+  wordpress:
+    container_name: wordpress
+    build: requirements/wordpress
+    networks:
+      - app-net
+    ports:
+      - "9000:9000"
+    volumes:
+      - wp:/site
+    env_file:
+      - .env
+
+  mariadb:
+    container_name: mariadb
+    build: requirements/mariadb
+    networks:
+      - app-net
+    ports:
+      - "3306:3306"
+    volumes:
+      - db:/site

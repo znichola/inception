@@ -10,4 +10,5 @@ This readme is, for now just a dump of some personal notes and links that are us
 - [really good ssl link, i think](https://www.feistyduck.com/library/openssl-cookbook/online/openssl-command-line/determine-version-and-configuration.html)
 - [extension of above link with the correct section](https://www.feistyduck.com/library/openssl-cookbook/online/openssl-command-line/key-generation.html)
 - [-sub explication](https://www.digicert.com/kb/ssl-support/openssl-quick-reference-guide.htm#Usingthe-subjSwitch)
+- [marai-db](https://mariadb.com/kb/en/a-mariadb-primer/)
 - 
