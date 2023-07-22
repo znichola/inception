@@ -17,10 +17,10 @@ This is long a confusing, maybe this link is better and simpler
 
 The LAMP stack is what we are asked to do:
 
-- **L**inux for the os
-- **E**nginx for the webserver
-- **M**ariadb for the database
-- **P**HP for dynamic processing
+**L**inux for the os
+**E**nginx for the webserver
+**M**ariadb for the database
+**P**HP for dynamic processing
 
 - [installing LEMP stack](https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mariadb-php-lemp-stack-on-debian-10)
 - [installing wordpress with LEMP](https://www.digitalocean.com/community/tutorials/how-to-install-wordpress-with-lemp-nginx-mariadb-and-php-on-debian-10)

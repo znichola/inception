@@ -31,7 +31,7 @@ services:
     ports:
       - "443:443"
     volumes:
-      - wp:/site
+      - wp:/website
 
   wordpress:
     container_name: wordpress
@@ -41,7 +41,7 @@ services:
     ports:
       - "9000:9000"
     volumes:
-      - wp:/site
+      - wp:/website
     env_file:
       - .env
 
@@ -53,4 +53,4 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - db:/site
+      - db:/database
