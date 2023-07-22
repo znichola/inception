@@ -32,6 +32,11 @@ ls :
 
 re : fclean up
 
+CN = nginx mariadb wordpress
+
+$(CN) :
+	docker exec -it $@ /bin/bash
+
 $(ENV) :
 	@./srcs/requirements/tools/gen-env.sh
 	@mv .env $@

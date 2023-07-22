@@ -11,6 +11,9 @@ RUN chmod +x /script/start-db.sh
  
 # ENTRYPOINT ["/script/start-db.sh"]
 
+# set comamnd prompt to indicate the container
+RUN echo 'PS1="mariadb\e[0;36m \w\e[0m > "' >> ~/.bashrc
+
 RUN /script/start-db.sh
 
 CMD ["mysqld"]
