@@ -21,7 +21,7 @@ RUN openssl \
 # ENTRYPOINT /bin/bash
 
 # set comamnd prompt to indicate the container
-RUN echo 'PS1="nginx\e[0;36m \w\e[0m > "' >> ~/.bashrc
+RUN echo 'PS1="nginx \w > "' >> ~/.bashrc
 
 CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
 # -g         is spesify a directive to nginx

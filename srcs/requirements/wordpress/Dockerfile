@@ -14,6 +14,6 @@ RUN apt update && apt install -y php8.2-fpm php-mysql
 EXPOSE 9000
 
 # set comamnd prompt to indicate the container
-RUN echo 'PS1="wordpress\e[0;36m \w\e[0m > "' >> ~/.bashrc
+RUN echo 'PS1="wordpress \w > "' >> ~/.bashrc
 
 CMD ["tail", "-f", "/dev/null"]

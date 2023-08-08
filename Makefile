@@ -23,6 +23,9 @@ fclean :
 	docker image rm   $(shell docker image ls -q)    $(TIDY)
 	docker volume rm  $(shell docker volume ls -q)   $(TIDY)
 	rm srcs/.env                                     $(TIDY)
+#	rm -rf /home/znichola/data
+#	mkdir /home/znichola/mariadb
+#	mkdir /home/znichola/wordpress
 
 ls :
 	docker container ls
