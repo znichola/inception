@@ -5,10 +5,10 @@ CONTAINERS = $(shell docker ps -a -q)
 TIDY=2>/dev/null ; true
 
 up : FORCE $(ENV) 
-	docker compose -f $D -p inception up -d
+	docker compose -f $D -p inception up 
 
 down :
-	docker compose -f $D down
+	docker compose -p inception down
 
 clean : down
 	yes | docker container prune

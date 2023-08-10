@@ -20,7 +20,7 @@ fi
 
 if cf "make wd and db directories"; then
 	mkdir -p /home/znichola/data/wordpress
-	mkdir -p /home/znichola/data/mariadbfi
+	mkdir -p /home/znichola/data/mariadb
 fi
 
 if cf "add znichola.42.fr to hosts"; then

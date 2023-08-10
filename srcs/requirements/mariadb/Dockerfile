@@ -7,7 +7,7 @@ EXPOSE 3306
 
 RUN mkdir -p /script
 COPY /tools/start-db.sh /script
-#RUN chmod +x /script/start-db.sh
+RUN chmod +x /script/start-db.sh
  
 # ENTRYPOINT ["/script/start-db.sh"]
 

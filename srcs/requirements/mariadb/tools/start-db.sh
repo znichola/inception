@@ -1,33 +1,32 @@
 #!/bin/bash
 
-U=`stat -c "%U" /database`
-G=`stat -c "%G" /database`
-
 log () {
 	printf "\e[36m\n > $@ \e[0m"
 }
 
-if [ "$U" == mysql ] && [ "$G" == mysql ]; then
-	log "user/group already assigned to mysql\n"
+DB=`du -s /database`
+if [ "$DB" == "4	/database" ]; then
+	log "attempting to install the databse with the user mysql and in the database folder\n"
+	mariadb-install-db --user=mysql --basedir=/usr --datadir=/database
 else
-	log "assigning /database to user/group mysql\n"
-	chown -R mysql:mysql /database
+	log "database folder is not empty, skipping db install\n"
 fi
-
-log "attempting to install the databse with the user mysql and in the database folder\n"
-mariadb-install-db --user=mysql --basedir=/usr --datadir=/database
 
 log "start mariadb service\n"
 service mariadb start
 
+> mariadb <<EOF
+CREATE DATABASE IF NOT EXISTS wordpress;
+CREATE USER IF NOT EXISTS 'znichola'@'wordpress.inception-net' IDENTIFIED BY '123';
+GRANT ALL PRIVILEGES ON wordpress.* TO 'znichola'@'wordpress.inception-net';
+FLUSH PRIVILEGES;
+EOF
+
+service maraidb stop
+
+mariadbd -u mysql
+
 #mariadb -u mysql
 
-
-
-# not usesd
-# mariadb-install-db \
-# 	--user=mysql \
-# 	--basedir=/database \
-# 	--datadir=/database/data
-
 # /etc/init.d/mariadb start
+
