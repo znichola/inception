@@ -9,12 +9,15 @@ RUN mkdir -p /script
 COPY /tools/start-db.sh /script
 RUN chmod +x /script/start-db.sh
  
-# ENTRYPOINT ["/script/start-db.sh"]
 
 # set comamnd prompt to indicate the container
 RUN echo 'PS1="mariadb \w > "' >> ~/.bashrc
 
-CMD ["tail", "-f", "/dev/null"]
-# RUN /script/start-db.sh
+#RUN /script/start-db.sh
 
-# CMD ["mysqld"]
+ENTRYPOINT ["/script/start-db.sh"]
+
+#CMD ["tail", "-f", "/dev/null"]
+
+#CMD ["mariadbd", "-u", "mysql"]
+#CMD ["mariadbd"]

@@ -15,16 +15,26 @@ fi
 log "start mariadb service\n"
 service mariadb start
 
-> mariadb <<EOF
+log "adding user and creating database if needed\n"
+
+if [ "$WP_USER" == "" ]; then
+	log "no env variable\n"
+	WP_USER = "no_user_set"
+fi
+
+mariadb <<EOF
 CREATE DATABASE IF NOT EXISTS wordpress;
-CREATE USER IF NOT EXISTS 'znichola'@'wordpress.inception-net' IDENTIFIED BY '123';
-GRANT ALL PRIVILEGES ON wordpress.* TO 'znichola'@'wordpress.inception-net';
+CREATE USER IF NOT EXISTS '${WP_USER}'@'wordpress.inception-net' IDENTIFIED BY '${WP_USER_PWD}';
+GRANT ALL PRIVILEGES ON wordpress.* TO '${WP_USER}'@'wordpress.inception-net';
 FLUSH PRIVILEGES;
 EOF
 
-service maraidb stop
+log "stopping serive to start it at pid 1\n"
 
-mariadbd -u mysql
+service mariadb stop
+
+
+mariadbd
 
 #mariadb -u mysql
 
