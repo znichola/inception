@@ -47,12 +47,14 @@ services:
 
   mariadb:
     container_name: mariadb
-    build: requirements/mariadb
+    build:
+      context: requirements/mariadb
+      args:
+        - WP_USER=${WP_USER}
+        - WP_USER_PWD=${WP_USER_PWD}
     networks:
       - inception-net
     ports:
       - "3306:3306"
     volumes:
       - db:/database
-    env_file:
-      - .env

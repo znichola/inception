@@ -8,16 +8,20 @@ EXPOSE 3306
 RUN mkdir -p /script
 COPY /tools/start-db.sh /script
 RUN chmod +x /script/start-db.sh
- 
+
 
 # set comamnd prompt to indicate the container
 RUN echo 'PS1="mariadb \w > "' >> ~/.bashrc
 
-#RUN /script/start-db.sh
+ARG WP_USER
+ARG WP_USER_PWD
 
-ENTRYPOINT ["/script/start-db.sh"]
+# RUN /script/start-db.sh
+
+#ENTRYPOINT ["/script/start-db.sh"]
+
 
 #CMD ["tail", "-f", "/dev/null"]
 
-#CMD ["mariadbd", "-u", "mysql"]
+CMD ["mariadbd", "-u", "mysql"]
 #CMD ["mariadbd"]

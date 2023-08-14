@@ -22,6 +22,12 @@ if [ "$WP_USER" == "" ]; then
 	WP_USER = "no_user_set"
 fi
 
+log "USER IS :\n"
+
+echo $WP_USER
+
+sleep 10
+
 mariadb <<EOF
 CREATE DATABASE IF NOT EXISTS wordpress;
 CREATE USER IF NOT EXISTS '${WP_USER}'@'wordpress.inception-net' IDENTIFIED BY '${WP_USER_PWD}';
@@ -34,7 +40,7 @@ log "stopping serive to start it at pid 1\n"
 service mariadb stop
 
 
-mariadbd
+#mariadbd
 
 #mariadb -u mysql
 

@@ -24,3 +24,13 @@ The LAMP stack is what we are asked to do:
 
 - [installing LEMP stack](https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mariadb-php-lemp-stack-on-debian-10)
 - [installing wordpress with LEMP](https://www.digitalocean.com/community/tutorials/how-to-install-wordpress-with-lemp-nginx-mariadb-and-php-on-debian-10)
+
+
+## Commands
+
+To show the mariadb database is setup correctly
+```mysql
+SHOW DATABASES;
+
+SELECT User FROM mysql.user;
+```
