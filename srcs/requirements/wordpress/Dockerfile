@@ -15,6 +15,7 @@ RUN apt update && apt install -y php8.2-fpm php-mysql
 # install the mariadb client for communication to the database
 RUN apt install -y mariadb-client
 
+RUN wget https://wordpress.org/wordpress-6.3.tar.gz
 
 
 EXPOSE 9000
