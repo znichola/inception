@@ -32,6 +32,7 @@ services:
       - "443:443"
     volumes:
       - wp:/website
+    restart: on-failure
 
   wordpress:
     container_name: wordpress
@@ -44,6 +45,7 @@ services:
       - wp:/website
     env_file:
       - .env
+    restart: on-failure
 
   mariadb:
     container_name: mariadb
@@ -58,3 +60,5 @@ services:
       - "3306:3306"
     volumes:
       - db:/database
+    restart: on-failure
+
