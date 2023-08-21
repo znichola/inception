@@ -32,20 +32,20 @@ services:
       - "443:443"
     volumes:
       - wp:/website
-    restart: on-failure
+    # restart: on-failure
 
   wordpress:
     container_name: wordpress
     build: requirements/wordpress
     networks:
       - inception-net
-    ports:
-      - "9000:9000"
+    # ports:
+      # - "9000:9000"
     volumes:
       - wp:/website
     env_file:
       - .env
-    restart: on-failure
+    # restart: on-failure
 
   mariadb:
     container_name: mariadb
@@ -56,9 +56,8 @@ services:
         - WP_USER_PWD=${WP_USER_PWD}
     networks:
       - inception-net
-    ports:
-      - "3306:3306"
+    # ports:
+      # - "3306:3306"
     volumes:
       - db:/database
-    restart: on-failure
-
+    # restart: on-failure
