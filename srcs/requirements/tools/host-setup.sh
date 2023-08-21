@@ -24,5 +24,5 @@ if cf "make wd and db directories"; then
 fi
 
 if cf "add znichola.42.fr to hosts"; then
-	echo "does nothing for now"
+	printf "\n# Inception project\n127.0.0.1	znichola.42.fr\n" >> /etc/hosts
 fi
