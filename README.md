@@ -11,6 +11,7 @@ This readme is, for now just a dump of some personal notes and links that are us
 - [extension of above link with the correct section](https://www.feistyduck.com/library/openssl-cookbook/online/openssl-command-line/key-generation.html)
 - [-sub explication](https://www.digicert.com/kb/ssl-support/openssl-quick-reference-guide.htm#Usingthe-subjSwitch)
 - [marai-db](https://mariadb.com/kb/en/a-mariadb-primer/)
+- [wordpress to php-fmp](https://blog.devsense.com/2019/php-nginx-docker)
 
 
 This is long a confusing, maybe this link is better and simpler

@@ -13,15 +13,17 @@ RUN chmod +x /script/start-db.sh
 # set comamnd prompt to indicate the container
 RUN echo 'PS1="mariadb \w > "' >> ~/.bashrc
 
+# relic from when I though it was a good idea to generate
+# the db files only on image build
 ARG WP_USER
 ARG WP_USER_PWD
 
 # RUN /script/start-db.sh
 
-#ENTRYPOINT ["/script/start-db.sh"]
+ENTRYPOINT ["/script/start-db.sh"]
 
 
 #CMD ["tail", "-f", "/dev/null"]
 
-CMD ["mariadbd", "-u", "mysql"]
+#CMD ["mariadbd", "-u", "mysql"]
 #CMD ["mariadbd"]

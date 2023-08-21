@@ -35,14 +35,14 @@ GRANT ALL PRIVILEGES ON wordpress.* TO '${WP_USER}'@'wordpress.inception-net';
 FLUSH PRIVILEGES;
 EOF
 
-log "stopping serive to start it at pid 1\n"
+log "stopping serive to put it into the forground"
 
 service mariadb stop
 
 
 #mariadbd
 
-#mariadb -u mysql
+mariadbd -u mysql
 
 # /etc/init.d/mariadb start
 

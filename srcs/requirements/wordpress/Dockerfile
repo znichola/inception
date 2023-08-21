@@ -11,16 +11,26 @@ RUN wget https://packages.sury.org/php/apt.gpg && apt-key add apt.gpg
 RUN echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/php.list
 RUN apt update && apt install -y php8.2-fpm php-mysql
 
+# for some reason the php folder is not in the run dir so we just add it!
+RUN mkdir -p /var/run/php
 
 # install the mariadb client for communication to the database
 RUN apt install -y mariadb-client
 
+# download and extra wordpress
 RUN wget https://wordpress.org/wordpress-6.3.tar.gz
+RUN tar -xf wordpress-6.3.tar.gz
+RUN rm wordpress-6.3.tar.gz
 
+# copy over script
+RUN mkdir -p /script
+COPY /tools/start.sh /script
+RUN chmod +x /script/start.sh
 
 EXPOSE 9000
 
 # set comamnd prompt to indicate the container
 RUN echo 'PS1="wordpress \w > "' >> ~/.bashrc
 
-CMD ["tail", "-f", "/dev/null"]
+CMD ["/script/start.sh"]
+#CMD ["tail", "-f", "/dev/null"]
