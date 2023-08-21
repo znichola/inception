@@ -14,6 +14,9 @@ RUN apt update && apt install -y php8.2-fpm php-mysql
 # for some reason the php folder is not in the run dir so we just add it!
 RUN mkdir -p /var/run/php
 
+# but we actually want to be listening to a tcp socket, so also this
+RUN sed -i 's#^listen = /run/php/php8.2-fpm.sock#listen = wordpress:9000#' /etc/php/8.2/fpm/pool.d/www.conf
+
 # install the mariadb client for communication to the database
 RUN apt install -y mariadb-client
 
