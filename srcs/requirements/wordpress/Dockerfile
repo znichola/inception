@@ -39,7 +39,7 @@ EXPOSE 9000
 # set comamnd prompt to indicate the container
 RUN echo 'PS1="wordpress \w > "' >> ~/.bashrc
 
-# ENTRYPOINT[]
+ENTRYPOINT ["/script/start.sh"]
+CMD ["/usr/sbin/php-fpm8.2", "--nodaemonize"]
 
-CMD ["/script/start.sh"]
 #CMD ["tail", "-f", "/dev/null"]

@@ -38,8 +38,8 @@ log "stopping serive to put it into the forground"
 service mariadb stop
 
 #mariadbd
-mariadbd -u mysql
+# mariadbd -u mysql
 # /etc/init.d/mariadb start
 
 # used to replace this script process with one passed as argument
-# exec "$@"
+exec "$@"

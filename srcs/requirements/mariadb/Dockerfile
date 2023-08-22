@@ -21,14 +21,10 @@ RUN echo "[mysqld]" >> /etc/mysql/my.cnf
 RUN echo "skip-networking=0" >> /etc/mysql/my.cnf
 RUN echo "skip-bind-address" >> /etc/mysql/my.cnf
 
-# RUN /script/start-db.sh
-
-
-
 ENTRYPOINT ["/script/start-db.sh"]
+CMD ["mariadbd", "-u", "mysql"]
 
 
 #CMD ["tail", "-f", "/dev/null"]
 
-#CMD ["mariadbd", "-u", "mysql"]
 #CMD ["mariadbd"]
