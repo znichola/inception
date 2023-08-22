@@ -22,27 +22,24 @@ if [ "$WP_USER" == "" ]; then
 	WP_USER = "no_user_set"
 fi
 
-log "USER IS :\n"
-
+log "USER IS : "
 echo $WP_USER
 
-sleep 10
+sleep 5
 
 mariadb <<EOF
 CREATE DATABASE IF NOT EXISTS wordpress;
-CREATE USER IF NOT EXISTS '${WP_USER}'@'wordpress.inception-net' IDENTIFIED BY '${WP_USER_PWD}';
-GRANT ALL PRIVILEGES ON wordpress.* TO '${WP_USER}'@'wordpress.inception-net';
+CREATE USER IF NOT EXISTS '${WP_USER}'@'%' IDENTIFIED BY '${WP_USER_PWD}';
+GRANT ALL PRIVILEGES ON wordpress.* TO '${WP_USER}'@'%';
 FLUSH PRIVILEGES;
 EOF
 
 log "stopping serive to put it into the forground"
-
 service mariadb stop
 
-
 #mariadbd
-
 mariadbd -u mysql
-
 # /etc/init.d/mariadb start
 
+# used to replace this script process with one passed as argument
+# exec "$@"

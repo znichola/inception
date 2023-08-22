@@ -1,4 +1,4 @@
-# must only contain WordPress + php-fpm (installed and configured without nginx)
+# must only contain mariaDB
 FROM debian:bullseye
 
 RUN apt-get -y update && apt-get -y install mariadb-server vim
@@ -17,6 +17,14 @@ RUN echo 'PS1="mariadb \w > "' >> ~/.bashrc
 # the db files only on image build
 ARG WP_USER
 ARG WP_USER_PWD
+
+# set the bind adress to 0s so we listen to the whole netword
+# and not just localhost as i've been doing like an idiot
+RUN echo "#inception" >> /etc/mysql/my.cnf
+RUN echo "[mysqld]" >> /etc/mysql/my.cnf
+#RUN echo "bind-address = 0.0.0.0" >> /etc/mysql/my.cnf
+RUN echo "skip-networking=0" >> /etc/mysql/my.cnf
+RUN echo "skip-bind-address" >> /etc/mysql/my.cnf
 
 # RUN /script/start-db.sh
 
