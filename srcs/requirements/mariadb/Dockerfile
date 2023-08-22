@@ -23,6 +23,8 @@ RUN echo "skip-bind-address" >> /etc/mysql/my.cnf
 
 # RUN /script/start-db.sh
 
+
+
 ENTRYPOINT ["/script/start-db.sh"]
 
 
