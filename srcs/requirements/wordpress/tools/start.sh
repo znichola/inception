@@ -6,7 +6,7 @@ log () {
 
 if [ "$(ls -A /website 2>/dev/null | wc -l)" -eq 0 ]; then
 	log "website files are empty, will install wordpress files\n"
-	mv /wordpress/* /website/
+	cp -r /wordpress/* /website/
 #	mv /website/wp-config-sample.php /website/wp-config.php
 #	sed -i "s/database_name_here/wordpress/g" /website/wp-config.php
 #	sed -i "s/username_here/$WP_DB_USER/g" /website/wp-config.php
