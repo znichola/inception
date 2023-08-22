@@ -29,10 +29,16 @@ RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli
 RUN chmod +x wp-cli.phar
 RUN mv wp-cli.phar /usr/local/bin/wp
 
-# RUN wp -- config create --dbname=<dbname> --dbuser=<dbuser> [--dbpass=<dbpass>] [--dbhost=<dbhost>] [--dbprefix=<dbprefix>] [--dbcharset=<dbcharset>] [--dbcollate=<dbcollate>] [--locale=<locale>] [--extra-php] [--skip-salts] [--skip-check] [--force] [--config-file=<path>] [--insecure]
-# RUN wp --allow-root config create --dbname=<dbname> --dbuser=<dbuser>
-RUN echo $WP_DB_USER
+RUN wp --allow-root config create \
+--dbname=wordpress --dbuser=$WP_DB_USER --dbpass=$WP_DB_USER_PWD --dbhost=mariadb --path=/wordpress
 
+RUN wp --allow-root core install \
+--url=znichola.42.fr --title="The Endlessly Splinning Top" \
+--admin_user=$WP_ADMIN --admin_password=$WP_ADMIN_PWD --admin_email="keyman@42.fr" --skip-email --path=/wordpress
+
+RUN wp --allow-root user create \
+$WP_USER "$WP_USER"@42.fr --user_pass=$WP_USER_PWD \
+--role=author --description="Probably the best writer on staff." --path=/wordpress
 
 # copy over script
 RUN mkdir -p /script
@@ -43,6 +49,8 @@ EXPOSE 9000
 
 # set comamnd prompt to indicate the container
 RUN echo 'PS1="wordpress \w > "' >> ~/.bashrc
+
+# ENTRYPOINT[]
 
 CMD ["/script/start.sh"]
 #CMD ["tail", "-f", "/dev/null"]

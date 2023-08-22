@@ -14,7 +14,7 @@ if [ "$(ls -A /website 2>/dev/null | wc -l)" -eq 0 ]; then
 #	sed -i "s/localhost/mariadb/g" /website/wp-config.php
 #	SPICE="$(curl https://api.wordpress.org/secret-key/1.1/salt/)"
 #	sed -i "/\/\*\*#@+/,/\/\*\*#@-*/c\\$SPICE" /website/wp-config.php
-#	#sed '/\/\*\*#@+/,/\/\*\*#@-*/c\'"$SPICE" /website/wp-config.php
+
 else
 	log "wordpress folder is not empty, not copying it over\n"
 fi
