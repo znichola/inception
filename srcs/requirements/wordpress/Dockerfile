@@ -3,7 +3,6 @@ FROM debian:bullseye
 
 RUN apt-get -y update && apt-get -y install wordpress curl
 
-
 # installing latest php version not in bulls eye package list
 # https://stackoverflow.com/questions/66158318/couldnt-find-any-package-by-glob-php8-0-in-debian
 RUN apt install -y wget gnupg2 lsb-release
@@ -24,6 +23,11 @@ RUN apt install -y mariadb-client
 RUN wget https://wordpress.org/wordpress-6.3.tar.gz
 RUN tar -xf wordpress-6.3.tar.gz
 RUN rm wordpress-6.3.tar.gz
+
+# downlaod and extract the wordpress CLI
+RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+RUN chmod +x wp-cli.phar
+RUN mv wp-cli.phar /usr/local/bin/wp
 
 # copy over script
 RUN mkdir -p /script
