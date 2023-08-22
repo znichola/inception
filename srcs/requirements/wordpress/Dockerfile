@@ -25,6 +25,10 @@ RUN wget https://wordpress.org/wordpress-6.3.tar.gz
 RUN tar -xf wordpress-6.3.tar.gz
 RUN rm wordpress-6.3.tar.gz
 
+# RUN wp -- config create --dbname=<dbname> --dbuser=<dbuser> [--dbpass=<dbpass>] [--dbhost=<dbhost>] [--dbprefix=<dbprefix>] [--dbcharset=<dbcharset>] [--dbcollate=<dbcollate>] [--locale=<locale>] [--extra-php] [--skip-salts] [--skip-check] [--force] [--config-file=<path>] [--insecure]
+# RUN wp --allow-root config create --dbname=<dbname> --dbuser=<dbuser>
+RUN echo $WP_DB_USER
+
 # copy over script
 RUN mkdir -p /script
 COPY /tools/start.sh /script
