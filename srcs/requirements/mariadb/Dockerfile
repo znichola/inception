@@ -13,11 +13,6 @@ RUN chmod +x /script/start-db.sh
 # set comamnd prompt to indicate the container
 RUN echo 'PS1="mariadb \w > "' >> ~/.bashrc
 
-# relic from when I though it was a good idea to generate
-# the db files only on image build
-ARG WP_USER
-ARG WP_USER_PWD
-
 # set the bind adress to 0s so we listen to the whole netword
 # and not just localhost as i've been doing like an idiot
 RUN echo "#inception" >> /etc/mysql/my.cnf

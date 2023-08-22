@@ -17,20 +17,20 @@ service mariadb start
 
 log "adding user and creating database if needed\n"
 
-if [ "$WP_USER" == "" ]; then
+if [ "$WP_DB_USER" == "" ]; then
 	log "no env variable\n"
-	WP_USER = "no_user_set"
+	WP_DB_USER = "no_user_set"
 fi
 
 log "USER IS : "
-echo $WP_USER
+echo $WP_DB_USER
 
 sleep 5
 
 mariadb <<EOF
 CREATE DATABASE IF NOT EXISTS wordpress;
-CREATE USER IF NOT EXISTS '${WP_USER}'@'%' IDENTIFIED BY '${WP_USER_PWD}';
-GRANT ALL PRIVILEGES ON wordpress.* TO '${WP_USER}'@'%';
+CREATE USER IF NOT EXISTS '${WP_DB_USER}'@'%' IDENTIFIED BY '${WP_DB_USER_PWD}';
+GRANT ALL PRIVILEGES ON wordpress.* TO '${WP_DB_USER}'@'%';
 FLUSH PRIVILEGES;
 EOF
 

@@ -9,8 +9,8 @@ if [ "$(ls -A /website 2>/dev/null | wc -l)" -eq 0 ]; then
 	mv /wordpress/* /website/
 #	mv /website/wp-config-sample.php /website/wp-config.php
 #	sed -i "s/database_name_here/wordpress/g" /website/wp-config.php
-#	sed -i "s/username_here/$WP_USER/g" /website/wp-config.php
-#	sed -i "s/password_here/$WP_USER_PWD/g" /website/wp-config.php
+#	sed -i "s/username_here/$WP_DB_USER/g" /website/wp-config.php
+#	sed -i "s/password_here/$WP_DB_USER_PWD/g" /website/wp-config.php
 #	sed -i "s/localhost/mariadb/g" /website/wp-config.php
 #	SPICE="$(curl https://api.wordpress.org/secret-key/1.1/salt/)"
 #	sed -i "/\/\*\*#@+/,/\/\*\*#@-*/c\\$SPICE" /website/wp-config.php
