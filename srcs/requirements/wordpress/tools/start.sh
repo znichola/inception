@@ -7,13 +7,17 @@ log () {
 if [ "$(ls -A /website 2>/dev/null | wc -l)" -eq 0 ]; then
 	log "website files are empty, will install wordpress files\n"
 	cp -r /wordpress/* /website/
-#	mv /website/wp-config-sample.php /website/wp-config.php
-#	sed -i "s/database_name_here/wordpress/g" /website/wp-config.php
-#	sed -i "s/username_here/$WP_DB_USER/g" /website/wp-config.php
-#	sed -i "s/password_here/$WP_DB_USER_PWD/g" /website/wp-config.php
-#	sed -i "s/localhost/mariadb/g" /website/wp-config.php
-#	SPICE="$(curl https://api.wordpress.org/secret-key/1.1/salt/)"
-#	sed -i "/\/\*\*#@+/,/\/\*\*#@-*/c\\$SPICE" /website/wp-config.php
+
+	wp --allow-root config create \
+	--dbname=wordpress --dbuser=$WP_DB_USER --dbpass=$WP_DB_USER_PWD --dbhost=mariadb --path=/wordpress
+
+	wp --allow-root core install \
+	--url=znichola.42.fr --title="The Endlessly Splinning Top" \
+	--admin_user=$WP_ADMIN --admin_password=$WP_ADMIN_PWD --admin_email="$WP_ADMIN"@42.fr --skip-email --path=/wordpress
+
+	wp --allow-root user create \
+	$WP_USER "$WP_USER"@42.fr --user_pass=$WP_USER_PWD \
+	--role=author --description="Probably the best writer on staff." --path=/wordpress
 
 else
 	log "wordpress folder is not empty, not copying it over\n"
