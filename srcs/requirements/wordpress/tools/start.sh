@@ -9,11 +9,15 @@ if [ "$(ls -A /website 2>/dev/null | wc -l)" -eq 0 ]; then
 	mv /wordpress/* /website/
 	mv /wordpress/wp-config-sample.php /wordpress/wp-config.php
 	sed -i 's/database_name_here/wordpress/g' /wordpress/wp-config.php
-	sed -i 's/database_name_here/wordpress/g' /wordpress/wp-config.php
-
+	sed -i 's/username_here/$WP_USER/g' /wordpress/wp-config.php
+	sed -i 's/password_here/$WP_USER_PWD/g' /wordpress/wp-config.php
+	sed -i 's/localhost/mariadb/g' /wordpress/wp-config.php
+SPICE="$(curl https://api.wordpress.org/secret-key/1.1/salt/)"
+	sed "/\/\*\*#@+/,/\/\*\*#@-*/c\
+$SPICE
+" /wordpress/wp-config.php
 else
 	log "wordpress folder is not empty, not copying it over\n"
 fi
 
 /usr/sbin/php-fpm8.2 --nodaemonize
-
