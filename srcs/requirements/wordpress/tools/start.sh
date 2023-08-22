@@ -54,4 +54,5 @@ else
 	log "wordpress folder is not empty, not copying it over\n"
 fi
 
-/usr/sbin/php-fpm8.2 --nodaemonize
+#/usr/sbin/php-fpm8.2 --nodaemonize
+exec "$@"
