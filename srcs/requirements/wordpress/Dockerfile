@@ -1,7 +1,7 @@
 # must only contain WordPress + php-fpm (installed and configured without nginx)
 FROM debian:bullseye
 
-RUN apt-get -y update && apt-get -y install wordpress
+RUN apt-get -y update && apt-get -y install wordpress curl
 
 
 # installing latest php version not in bulls eye package list
@@ -20,7 +20,7 @@ RUN sed -i 's#^listen = /run/php/php8.2-fpm.sock#listen = wordpress:9000#' /etc/
 # install the mariadb client for communication to the database
 RUN apt install -y mariadb-client
 
-# download and extra wordpress
+# download and extract wordpress
 RUN wget https://wordpress.org/wordpress-6.3.tar.gz
 RUN tar -xf wordpress-6.3.tar.gz
 RUN rm wordpress-6.3.tar.gz
