@@ -7,7 +7,7 @@ log () {
 DB=`du -s /database`
 if [ "$DB" == "4	/database" ]; then
 	log "databse is empty, attempting to install db and user\n"
-	mariadb-install-db --user=mysql --basedir=/usr --datadir=/database
+	# mariadb-install-db --user=mysql --basedir=/usr --datadir=/database
 	touch db_installed
 
 	log "start mariadb service\n"
@@ -35,11 +35,11 @@ if [ "$DB" == "4	/database" ]; then
 	log "stopping serive to put it into the forground"
 	service mariadb stop
 else
-	if [ -f db_installed ]; then
-		echo "db is installed"
-	else
-		mariadb-install-db --user=mysql --basedir=/usr --datadir=/database
-	fi
+	# if [ -f db_installed ]; then
+	# 	echo "db is installed"
+	# else
+	# 	mariadb-install-db --user=mysql --basedir=/usr --datadir=/database
+	# fi
 	# service mariadb start
 	# service mariadb stop
 	log "database folder is not empty, skipping db install\n"
