@@ -4,13 +4,15 @@ log () {
 	printf "\e[36m\n > $@ \e[0m"
 }
 
-	mariadb-install-db --user=mysql --basedir=/usr --datadir=/database
-	
+#	mariadb-install-db --user=mysql --basedir=/usr --datadir=/database
+
 	log "start mariadb service\n"
+#	mariadbd -u mysql
+#	/usr/bin/mariadb-safe --datadir='/database'
 	service mariadb start
 
 DB=`du -s /database`
-if [ ! -d /databse/wordpress ]; then
+if [ ! -d /database/wordpress ]; then
 	log "databse is empty, attempting to install db and user\n"
 	log "adding user and creating database if needed\n"
 
