@@ -11,7 +11,8 @@ RUN apt update && apt install -y php8.2-fpm php-mysql
 EXPOSE 8080
 
 # Start Adminer when the container runs
-CMD ["adminer"]
+# CMD ["adminer"]
+CMD ["tail", "-f", "/dev/null"]
 
 # docker build -t adminer-debian .
 # docker run --name adminer-container -d -p 8080:8080 adminer-debian
