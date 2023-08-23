@@ -40,7 +40,7 @@ data-clean :
 print-env :
 	./srcs/requirements/tools/print_password.sh srcs/.env
 
-CN = nginx mariadb wordpress ftp-server
+CN = nginx mariadb wordpress ftp_server
 
 $(CN) :
 	docker exec -it $@ /bin/bash

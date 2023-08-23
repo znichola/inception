@@ -59,9 +59,9 @@ services:
     env_file:
       - .env
 
-  ftp-server:
+  ftp_server:
     container_name: ftp_server
-    build: requirements/bonus/ftp-server
+    build: requirements/bonus/ftp_server
     networks:
       - inception-net
     volumes:
