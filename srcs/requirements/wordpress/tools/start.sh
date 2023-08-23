@@ -12,7 +12,7 @@ create_wp_config() {
 
 finish_wp_setup() {
 	wp --allow-root core install \
-	--url=znichola.42.fr --title="The Endlessly Splinning Top" \
+	--url=znichola.42.fr --title="The Endlessly Spinning Top" \
 	--admin_user=$WP_ADMIN --admin_password=$WP_ADMIN_PWD --admin_email="$WP_ADMIN"@42.fr --skip-email --path=/website
 
 	wp --allow-root user create \

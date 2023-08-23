@@ -2,14 +2,19 @@ FROM debian:bullseye
 
 RUN apt-get -y update && apt-get -y install vsftpd
 
-COPY conf/vsftpd.conf /etc/vsftpd.conf
+RUN mkdir -p /script
 
-RUN mkdir -p /var/ftp
+COPY conf/vsftpd.conf /etc/vsftpd.conf
+COPY script/entrypoint.sh /script/entrypoint.sh
+RUN chmod +x /script/entrypoint.sh
+
+RUN mkdir -p /var/run/vsftpd/empty
 
 EXPOSE 21/tcp
 
-# CMD ["vsftpd"]
+ENTRYPOINT ["script/entrypoint.sh"]
+CMD ["vsftpd"]
 
-CMD ["tail", "-f", "/dev/null"]
-
-# docker build . -t ftp
+# docker build -t ftp-server .
+# docker run --name ftp-server -p 21:21 ftp-server
+# docker exec -it ftp-server bash
