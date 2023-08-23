@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define variables
-MAX_RETRIES=5
+MAX_RETRIES=10
 DELAY_SECONDS=5
 ATTEMPT=1
 
@@ -9,7 +9,7 @@ create_wp_config() {
 	wp --allow-root config create \
 	--dbname=wordpress --dbuser=$WP_DB_USER --dbpass=$WP_DB_USER_PWD --dbhost=mariadb --path=/website
 }
-
+# 
 finish_wp_setup() {
 	wp --allow-root core install \
 	--url=znichola.42.fr --title="The Endlessly Splinning Top" \
@@ -17,7 +17,7 @@ finish_wp_setup() {
 
 	wp --allow-root user create \
 	$WP_USER "$WP_USER"@42.fr --user_pass=$WP_USER_PWD \
-	--role=author --description="Probably the best writer on staff." --path=/website
+	--role=editor --description="Probably the best writer on staff." --path=/website
 }
 
 log () {

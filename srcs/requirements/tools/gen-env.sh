@@ -9,14 +9,14 @@ WP_ADMIN_PWD=$(pwgen -s1 4)
 WP_USER=znichola
 WP_USER_PWD=$(pwgen -s1 4)
 
-printf "\
-Wordpress login details
-Admin: keymaker | \033[92m$WP_ADMIN_PWD\033[0m
- User: znichola | \033[92m$WP_USER_PWD\033[0m
-
-Mariadb user details
-        db_user | \033[92m$WP_DB_USER_PWD\033[0m
-"
+# printf "\
+# Wordpress login details
+# Admin: keymaker | \033[92m$WP_ADMIN_PWD\033[0m
+#  User: znichola | \033[92m$WP_USER_PWD\033[0m
+# 
+# Mariadb user details
+#         db_user | \033[92m$WP_DB_USER_PWD\033[0m
+# "
 
 printf "\
 # ENV for the containters
@@ -29,3 +29,5 @@ WP_USER_PWD=$WP_USER_PWD
 WP_DB_USER=$WP_DB_USER
 WP_DB_USER_PWD=$WP_DB_USER_PWD
 "> .env
+
+printf "\n env generated\n"

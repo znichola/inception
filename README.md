@@ -33,7 +33,24 @@ The LAMP stack is what we are asked to do:
 
 To show the mariadb database is setup correctly
 ```mysql
+-- to see the different database there are
 SHOW DATABASES;
+
+-- select a db to use
+USE wordpress;
+
+-- to show the varous tables there are in the db
+SHOW TABES;
+
+-- to see the various colum names in the table
+DESCRIBE wp_comments;
+
+-- to select data to be displayed
+SELECT comment_author, comment_content FROM wp_comments;
+
+-- or to see everything in a table;
+SELECT * FROM wp_users;
+
 
 SELECT User FROM mysql.user;
 ```

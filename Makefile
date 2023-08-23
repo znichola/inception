@@ -4,7 +4,7 @@ ENV=srcs/.env
 CONTAINERS = $(shell docker ps -a -q)
 TIDY=2>/dev/null ; true
 
-up : FORCE $(ENV) 
+up : FORCE $(ENV) print-env 
 	docker compose -f $D -p inception up 
 
 down :
@@ -22,7 +22,6 @@ fclean :
 	docker network rm $(shell docker network ls -q)  $(TIDY)
 	docker image rm   $(shell docker image ls -q)    $(TIDY)
 	docker volume rm  $(shell docker volume ls -q)   $(TIDY)
-	rm srcs/.env                                     $(TIDY)
 
 ls :
 	docker container ls
@@ -36,6 +35,10 @@ data-clean :
 	rm -rf /home/znichola/data
 	mkdir -p /home/znichola/data/mariadb
 	mkdir -p /home/znichola/data/wordpress
+	rm srcs/.env                                     $(TIDY)
+
+print-env :
+	./srcs/requirements/tools/print_password.sh srcs/.env
 
 CN = nginx mariadb wordpress
 
