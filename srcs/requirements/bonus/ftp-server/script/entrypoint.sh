@@ -3,8 +3,9 @@
 if [ "$1" == vsftpd ]; then
 	printf "setting up vsftpd stuff ... \n"
 
-	WP_ADMIN=db_user
-	WP_ADMIN_PWD=123 
+	if [ "$WP_ADMIN" == "" ]; then
+		WP_ADMIN=user_not_set
+	fi
 
 	touch /etc/vsftpd.log
 	touch /etc/xferlog.log
@@ -24,6 +25,5 @@ if [ "$1" == vsftpd ]; then
 	tail -f /etc/xferlog.log | tee /dev/stdout &
 
 	printf "setup done.\n"
-fi	
+fi
 exec "$@"
-
