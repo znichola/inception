@@ -22,7 +22,9 @@ RUN echo "skip-networking=0" >> /etc/mysql/my.cnf
 RUN echo "skip-bind-address" >> /etc/mysql/my.cnf
 
 # this seems like it should be broken the file get overwritten
-RUN mkdir database
+RUN mkdir database ; chown mysql:mysql /database
+RUN mkdir -p /run/mysqld
+
 RUN mariadb-install-db --user=mysql --basedir=/usr --datadir=/database
 
 ENTRYPOINT ["/script/start-db.sh"]
