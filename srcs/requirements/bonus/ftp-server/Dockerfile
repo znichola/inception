@@ -8,8 +8,6 @@ COPY conf/vsftpd.conf /etc/vsftpd.conf
 COPY script/entrypoint.sh /script/entrypoint.sh
 RUN chmod +x /script/entrypoint.sh
 
-RUN mkdir -p /var/run/vsftpd/empty
-
 EXPOSE 21/tcp
 
 ENTRYPOINT ["script/entrypoint.sh"]

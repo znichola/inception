@@ -58,3 +58,9 @@ services:
     # restart: on-failure
     env_file:
       - .env
+  ftp-server:
+    container_name: ftp_server
+    build: requirements/bonus/ftp-server
+    volumes:
+      - wp:/$DB_ADMIN
+
