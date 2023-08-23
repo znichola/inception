@@ -4,8 +4,8 @@ ENV=srcs/.env
 CONTAINERS = $(shell docker ps -a -q)
 TIDY=2>/dev/null ; true
 
-up : FORCE $(ENV) print-env 
-	docker compose -f $D -p inception up --build
+up : FORCE $(ENV) print-env
+	docker compose -f $D -p inception up
 
 down :
 	docker compose -p inception down
@@ -16,7 +16,7 @@ clean : down
 	yes | docker network   prune
 	yes | docker volume    prune
 
-fclean : 
+fclean :
 	docker stop       $(CONTAINERS)                  $(TIDY)
 	docker rm         $(CONTAINERS)                  $(TIDY)
 	docker network rm $(shell docker network ls -q)  $(TIDY)

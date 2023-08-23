@@ -21,8 +21,6 @@ if [ ! -d /database/wordpress ]; then
 	log "USER IS : "
 	echo $WP_DB_USER
 
-	sleep 5
-
 	mariadb <<- EOF
 	CREATE DATABASE IF NOT EXISTS wordpress;
 	CREATE USER IF NOT EXISTS '${WP_DB_USER}'@'%' IDENTIFIED BY '${WP_DB_USER_PWD}';
@@ -31,13 +29,6 @@ if [ ! -d /database/wordpress ]; then
 	EOF
 
 else
-	# if [ -f db_installed ]; then
-	# 	echo "db is installed"
-	# else
-	# 	mariadb-install-db --user=mysql --basedir=/usr --datadir=/database
-	# fi
-	# service mariadb start
-	# service mariadb stop
 	log "database folder is not empty, skipping db install\n"
 	# mkdir -p /run/mysqld
 	# rm /var/lib/mysql/mysql.sock

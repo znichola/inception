@@ -9,7 +9,7 @@ create_wp_config() {
 	wp --allow-root config create \
 	--dbname=wordpress --dbuser=$WP_DB_USER --dbpass=$WP_DB_USER_PWD --dbhost=mariadb --path=/website
 }
-# 
+
 finish_wp_setup() {
 	wp --allow-root core install \
 	--url=znichola.42.fr --title="The Endlessly Splinning Top" \

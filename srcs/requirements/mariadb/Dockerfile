@@ -26,12 +26,6 @@ RUN echo "datadir=/database" >> /etc/mysql/my.cnf
 RUN mkdir -p /database
 RUN mariadb-install-db --user=mysql --basedir=/usr --datadir=/database
 
-# this seems like it should be broken the file get overwritten
-RUN mkdir database ; chown mysql:mysql /database
-RUN mkdir -p /run/mysqld
-
-RUN mariadb-install-db --user=mysql --basedir=/usr --datadir=/database
-
 ENTRYPOINT ["/script/start-db.sh"]
 CMD ["mariadbd", "-u", "mysql"]
 
