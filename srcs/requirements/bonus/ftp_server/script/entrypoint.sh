@@ -23,8 +23,8 @@ if [ "$1" == vsftpd ]; then
 	chown -R $WP_ADMIN:$WP_ADMIN /home/"$WP_ADMIN"
 
 	# VSFTPd standard log container redirection
-	tail -f /etc/vsftpd.log | tee /dev/stdout &
-	tail -f /etc/xferlog.log | tee /dev/stdout &
+	tail -f /var/log/vsftpd/vsftpd.log | tee /dev/stdout &
+	tail -f /var/log/vsftpd/xferlog.log | tee /dev/stdout &
 
 	printf "setup done.\n"
 
