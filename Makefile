@@ -5,7 +5,7 @@ CONTAINERS = $(shell docker ps -a -q)
 TIDY=2>/dev/null ; true
 
 up : FORCE $(ENV) print-env 
-	docker compose -f $D -p inception up 
+	docker compose -f $D -p inception up --build
 
 down :
 	docker compose -p inception down
