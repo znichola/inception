@@ -43,6 +43,8 @@ services:
       - wp:/website
     env_file:
       - .env
+    depends_on:
+      - mariadb
     # restart: on-failure
 
   mariadb:

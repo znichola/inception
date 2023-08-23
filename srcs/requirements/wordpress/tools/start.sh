@@ -29,7 +29,7 @@ if [ "$(ls -A /website 2>/dev/null | wc -l)" -eq 0 ]; then
 	cp -r /wordpress/* /website/
 
 	cd /website
-
+	sleep 5
 	# Loop to retry the command
 	while [ $ATTEMPT -le $MAX_RETRIES ]; do
 		echo "Attempt $ATTEMPT to connect to mariadb"
