@@ -74,3 +74,14 @@ services:
     depends_on:
       - wordpress
     restart: always
+
+  adminer:
+    container_name: adminer
+    build: ./requirements/bonus/adminer/
+    networks:
+      - inception-net
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mariadb
+    restart: always
