@@ -5,12 +5,11 @@ log () {
 }
 
 	mariadb-install-db --user=mysql --basedir=/usr --datadir=/database
-	
+
 	log "start mariadb service\n"
 	service mariadb start
 
-DB=`du -s /database`
-if [ ! -d /databse/wordpress ]; then
+if [ ! -d /database/wordpress ]; then
 	log "databse is empty, attempting to install db and user\n"
 	log "adding user and creating database if needed\n"
 
@@ -31,7 +30,6 @@ if [ ! -d /databse/wordpress ]; then
 	FLUSH PRIVILEGES;
 	EOF
 
-	log "stopping serive to put it into the forground"
 else
 	log "database folder is not empty, skipping db install\n"
 	# mkdir -p /run/mysqld
@@ -40,6 +38,7 @@ else
 	# service mariadb start
 	# service mariadb stop
 fi
+	log "stopping serive to put it into the forground"
 	service mariadb stop
 
 #mariadbd
