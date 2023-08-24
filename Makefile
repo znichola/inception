@@ -40,6 +40,9 @@ data-clean :
 print-env :
 	./srcs/requirements/tools/print_password.sh srcs/.env
 
+ip :
+	docker ps -q | xargs -I{} docker inspect -f '{{.Name}} {{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' {}
+
 CN = nginx mariadb wordpress ftp_server adminer
 
 $(CN) :

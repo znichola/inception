@@ -1,18 +1,28 @@
-FROM debian:bullseye
+# base for this file 
+# https://github.com/dockette/adminer/blob/master/adminer-mysql/Dockerfile
 
-RUN apt-get -y update && apt-get -y install adminer
+FROM alpine:3.17
 
-# see wordpress for link
-RUN apt install -y wget gnupg2 lsb-release
-RUN wget https://packages.sury.org/php/apt.gpg && apt-key add apt.gpg
-RUN echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/php.list
-RUN apt update && apt install -y php8.2-fpm php-mysql
+ENV WORKERS=4
+ENV PHP_CLI_SERVER_WORKERS=${WORKERS}
 
+# old packages that don't yet exist in the second to latest version found here
+RUN echo 'https://dl-cdn.alpinelinux.org/alpine/v3.14/community' >> /etc/apk/repositories
+RUN echo '@community http://nl.alpinelinux.org/alpine/v3.17/community' >> /etc/apk/repositories && \
+    apk update && \
+    apk upgrade && \
+    apk add \
+        wget \
+        ca-certificates \
+        php8@community \
+        php8-session@community \
+        php8-mysqli@community && \
+    wget https://github.com/vrana/adminer/releases/download/v4.8.1/adminer-4.8.1.php -O /srv/index.php && \
+    ln -s /usr/bin/php8 /usr/bin/php && \
+    apk del wget ca-certificates && \
+    rm -rf /var/cache/apk/*
+
+WORKDIR /srv
 EXPOSE 8080
 
-# Start Adminer when the container runs
-# CMD ["adminer"]
-CMD ["tail", "-f", "/dev/null"]
-
-# docker build -t adminer-debian .
-# docker run --name adminer-container -d -p 8080:8080 adminer-debian
+CMD ["php", "-d", "memory_limit=256M", "-S", "0.0.0.0:8080"]
