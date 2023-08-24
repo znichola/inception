@@ -21,9 +21,9 @@ volumes:
       device: /home/znichola/data/mariadb
       type: none
       o: bind
-  svelt:
+  sv:
     driver: local
-    name: svelt
+    name: sv
     driver_opts:
       device: /home/znichola/data/svelt
       type: none
@@ -108,15 +108,14 @@ services:
       - wordpress
     restart: always
 
-  node:
-    container_name: node
-    build: ./requirements/bonus/node/
+  svelt:
+    container_name: svelt
+    build: ./requirements/bonus/svelt/
     networks:
       - inception-net
     volumes:
-      - svelt:/root/sveltapp
+      - sv:/root/sveltapp
     ports:
       - "5173:5173"
     restart: always
     init: true
-
