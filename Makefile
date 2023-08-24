@@ -35,6 +35,7 @@ data-clean :
 	rm -rf /home/znichola/data
 	mkdir -p /home/znichola/data/mariadb
 	mkdir -p /home/znichola/data/wordpress
+	mkdir -p /home/znichola/data/svelt
 	rm srcs/.env                                     $(TIDY)
 
 print-env :
@@ -47,6 +48,9 @@ CN = nginx mariadb wordpress ftp_server adminer redis
 
 $(CN) :
 	docker exec -it $@ /bin/bash
+
+node :
+	docker exec -it $@ /bin/zsh
 
 $(ENV) :
 	@./srcs/requirements/tools/gen-env.sh
