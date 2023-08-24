@@ -21,18 +21,18 @@ volumes:
       device: /home/znichola/data/mariadb
       type: none
       o: bind
-  sv:
-    driver: local
-    name: sv
-    driver_opts:
-      device: /home/znichola/data/svelte-dev
-      type: none
-      o: bind
   svd:
     driver: local
     name: sv
     driver_opts:
       device: /home/znichola/data/svelte-deploy
+      type: none
+      o: bind
+  sv:
+    driver: local
+    name: sv
+    driver_opts:
+      device: /home/znichola/data/svelte-dev
       type: none
       o: bind
 
@@ -122,8 +122,8 @@ services:
     networks:
       - inception-net
     volumes:
+      # - svd:/root/svelteapp-deploy
       - sv:/root/svelteapp
-      - svd:/root/svelteapp-deploy
     ports:
       - "5173:5173"
     init: true

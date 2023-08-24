@@ -11,9 +11,11 @@ if [ -e /root/svelteapp/package-lock.json ]; then
 else
 	log "Svelte projekt is empty, copy over\n"
 
+	pwd
+
 	cp -r /svelteapp-backup/. /root/svelteapp/
 	npm install
-	npm i -D @sveltejs/adapter-static
+#	npm i -D @sveltejs/adapter-static
 fi
 
 

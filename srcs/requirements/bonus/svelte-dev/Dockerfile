@@ -18,6 +18,7 @@ RUN mkdir -p /script
 COPY /script/entrypoint.sh /script
 RUN chmod +x /script/entrypoint.sh
 
+RUN mkdir -p /root/svelteapp /root/svelteapp-deploy
 COPY /svelteapp /svelteapp-backup
 
 WORKDIR /root/svelteapp
@@ -25,8 +26,8 @@ WORKDIR /root/svelteapp
 EXPOSE 5173
 
 ENTRYPOINT ["/script/entrypoint.sh"]
-#CMD ["tail", "-f", "/dev/null"]
-CMD ["npm", "run", "dev", "--", "--host"]
+CMD ["tail", "-f", "/dev/null"]
+#CMD ["npm", "run", "dev", "--", "--host"]
 
 # docker build -t node-server .
 # docker run --init --name node-server -p 420:420 node-server
