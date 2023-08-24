@@ -25,7 +25,14 @@ volumes:
     driver: local
     name: sv
     driver_opts:
-      device: /home/znichola/data/svelt
+      device: /home/znichola/data/svelte-dev
+      type: none
+      o: bind
+  svbp:
+    driver: local
+    name: sv
+    driver_opts:
+      device: /home/znichola/data/svelte-deploy
       type: none
       o: bind
 
@@ -108,14 +115,15 @@ services:
       - wordpress
     restart: always
 
-  svelt:
-    container_name: svelt
-    build: ./requirements/bonus/svelt/
+  svelte-dev:
+    container_name: svelte-dev
+    build: ./requirements/bonus/svelte-dev/
     networks:
       - inception-net
     volumes:
-      - sv:/root/sveltapp
+      - sv:/root/svelteapp
+      - svdp:/root/svelteapp-deploy
     ports:
       - "5173:5173"
-    restart: always
     init: true
+    restart: always

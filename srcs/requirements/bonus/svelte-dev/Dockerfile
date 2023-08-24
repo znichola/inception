@@ -18,7 +18,7 @@ RUN mkdir -p /script
 COPY /script/entrypoint.sh /script
 RUN chmod +x /script/entrypoint.sh
 
-COPY /sveltapp /svelteapp-backup
+COPY /svelteapp /svelteapp-backup
 
 WORKDIR /root/svelteapp
 
