@@ -22,7 +22,7 @@ volumes:
       type: none
       o: bind
   svelt:
-    diver: local
+    driver: local
     name: svelt
     driver_opts:
       device: /home/znichola/data/svelt
