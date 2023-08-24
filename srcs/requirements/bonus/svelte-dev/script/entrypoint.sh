@@ -23,7 +23,7 @@ log "build static site\n"
 npm run build
 
 cp -r /root/svelteapp/build/. /root/deploy
-
+rm -rf /root/svelteapp/build
 log "build copied to deployment folder\n"
 
 exec "$@"
