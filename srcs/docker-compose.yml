@@ -32,6 +32,8 @@ services:
       - "443:443"
     volumes:
       - wp:/website
+    depends_on:
+      - wordpress
     # restart: on-failure
 
   wordpress:

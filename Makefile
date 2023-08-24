@@ -43,7 +43,7 @@ print-env :
 ip :
 	docker ps -q | xargs -I{} docker inspect -f '{{.Name}} {{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' {}
 
-CN = nginx mariadb wordpress ftp_server adminer
+CN = nginx mariadb wordpress ftp_server adminer redis
 
 $(CN) :
 	docker exec -it $@ /bin/bash

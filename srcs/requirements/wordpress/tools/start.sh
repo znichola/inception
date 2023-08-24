@@ -20,7 +20,13 @@ finish_wp_setup() {
 	--role=editor --description="Probably the best writer on staff." --path=/website
 
 	# install redis plugin for the bonus
+	wp --allow-root config set WP_REDIS_HOST redis
+	wp --allow-root config set WP_REDIS_PORT 6379
+	wp --allow-root config set WP_REDIS_CLIENT phpredis
+	wp --allow-root config set WP_CACHE_KEY_SALT znichola.42.fr # seems a bit wird no?
 	wp --allow-root plugin install redis-cache --activate
+	wp --allow-root redis enable
+#	wp redis enable --force --allow-root
 }
 
 log () {

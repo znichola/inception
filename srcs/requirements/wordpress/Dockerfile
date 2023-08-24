@@ -29,6 +29,10 @@ RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli
 RUN chmod +x wp-cli.phar
 RUN mv wp-cli.phar /usr/local/bin/wp
 
+# install php-redit and redis
+# must be done after we install the latest php
+RUN apt-get install -y redis php-redis
+
 # copy over script
 RUN mkdir -p /script
 COPY /tools/start.sh /script
