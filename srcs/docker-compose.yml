@@ -28,7 +28,7 @@ volumes:
       device: /home/znichola/data/svelte-dev
       type: none
       o: bind
-  svbp:
+  svd:
     driver: local
     name: sv
     driver_opts:
@@ -46,6 +46,7 @@ services:
       - "443:443"
     volumes:
       - wp:/website
+      - svd:/svelteapp-deploy
     depends_on:
       - wordpress
     # restart: on-failure
@@ -122,7 +123,7 @@ services:
       - inception-net
     volumes:
       - sv:/root/svelteapp
-      - svdp:/root/svelteapp-deploy
+      - svd:/root/svelteapp-deploy
     ports:
       - "5173:5173"
     init: true
