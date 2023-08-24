@@ -6,6 +6,8 @@ log () {
 
 log "entrypointing into node\n"
 
+cd /root/svelteapp
+
 if [ -e /root/svelteapp/package-lock.json ]; then
 	log "nothing for script to do, handing over\n"
 else

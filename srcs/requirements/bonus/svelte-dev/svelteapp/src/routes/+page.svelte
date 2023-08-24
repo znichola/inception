@@ -1,5 +1,3 @@
-export const prerender = true;
-
 <h1 style="text-align: center; line-height: 100px;">
   What does it mean to be..
 </h1>

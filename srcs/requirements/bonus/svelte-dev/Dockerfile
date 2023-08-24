@@ -18,12 +18,12 @@ RUN mkdir -p /script
 COPY /script/entrypoint.sh /script
 RUN chmod +x /script/entrypoint.sh
 
-RUN mkdir -p /root/svelteapp /root/svelteapp-deploy
+RUN mkdir -p /root/svelteapp /root/deploy
 COPY /svelteapp /svelteapp-backup
 
 RUN npm install -g npm@9.8.1
 
-WORKDIR /root/svelteapp
+# WORKDIR /root/svelteapp
 
 EXPOSE 5173
 
