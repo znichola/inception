@@ -11,7 +11,7 @@ if [ -e /root/svelteapp/package-lock.json ]; then
 else
 	log "Svelte projekt is empty, copy over\n"
 
-	cp -r /svelteapp-backup /root/svelteapp
+	cp -r /svelteapp-backup/. /root/svelteapp/
 	npm install
 fi
 
