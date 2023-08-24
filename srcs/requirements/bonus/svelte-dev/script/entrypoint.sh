@@ -22,6 +22,8 @@ log "build static site\n"
 
 npm run build
 
-cp /root/svelteapp/build/. /root/deploy
+cp -r /root/svelteapp/build/. /root/deploy
+
+log "build copied to deployment folder\n"
 
 exec "$@"
