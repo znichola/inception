@@ -13,6 +13,7 @@ else
 
 	cp -r /svelteapp-backup/. /root/svelteapp/
 	npm install
+	npm i -D @sveltejs/adapter-static
 fi
 
 
