@@ -6,17 +6,13 @@ log () {
 
 log "entrypointing into node\n"
 
-if [ $1 == "tail" ]; then
-	log " doing infinate loop tail\n"
-	log " empty folder so we need to do the copy bullshit"
-
-	cp -r /sveltapp-backup /root/sveltapp2
-	cd /root/sveltapp2
-	npm install
-
+if [ -e /root/svelteapp/package-lock.json ]; then
+	log "nothing for script to do, handing over\n"
 else
+	log "Svelte projekt is empty, copy over\n"
 
-	log "done sleeping handing over the process to what came before\n"
+	cp -r /svelteapp-backup /root/svelteapp
+	npm install
 fi
 
 

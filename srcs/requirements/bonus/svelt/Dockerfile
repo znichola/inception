@@ -18,7 +18,9 @@ RUN mkdir -p /script
 COPY /script/entrypoint.sh /script
 RUN chmod +x /script/entrypoint.sh
 
-COPY /sveltapp /sveltapp-backup
+COPY /sveltapp /svelteapp-backup
+
+WORKDIR /root/svelteapp
 
 EXPOSE 5173
 
