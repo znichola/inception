@@ -18,5 +18,10 @@ else
 #	npm i -D @sveltejs/adapter-static
 fi
 
+log "build static site\n"
+
+npm run build
+
+cp /root/svelteapp/build/. /root/deploy
 
 exec "$@"
