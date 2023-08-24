@@ -18,6 +18,9 @@ finish_wp_setup() {
 	wp --allow-root user create \
 	$WP_USER "$WP_USER"@42.fr --user_pass=$WP_USER_PWD \
 	--role=editor --description="Probably the best writer on staff." --path=/website
+
+	# install redis plugin for the bonus
+	wp --allow-root plugin install redis-cache --activate
 }
 
 log () {

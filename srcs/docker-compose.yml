@@ -85,3 +85,14 @@ services:
     depends_on:
       - mariadb
     restart: always
+
+  redis:
+    container_name: redis
+    build: ./requirements/bonus/redis/
+    networks:
+      - inception-net
+    ports:
+      - "6379:6379"
+    depends_on:
+      - wordpress
+    restart: always
