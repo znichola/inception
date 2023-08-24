@@ -49,7 +49,7 @@ CN = nginx mariadb wordpress ftp_server adminer redis
 $(CN) :
 	docker exec -it $@ /bin/bash
 
-node :
+svelt :
 	docker exec -it $@ /bin/zsh
 
 $(ENV) :

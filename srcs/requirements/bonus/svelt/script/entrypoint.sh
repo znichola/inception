@@ -10,7 +10,7 @@ if [ $1 == "tail" ]; then
 	log " doing infinate loop tail\n"
 	log " empty folder so we need to do the copy bullshit"
 
-	cp /sveltapp-backup /root/sveltapp2
+	cp -r /sveltapp-backup /root/sveltapp2
 	cd /root/sveltapp2
 	npm install
 
