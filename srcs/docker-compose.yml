@@ -75,6 +75,7 @@ services:
       - .env
     depends_on:
       - wordpress
+    init: true
     restart: always
 
   adminer:
@@ -86,6 +87,7 @@ services:
       - "8080:8080"
     depends_on:
       - mariadb
+    init: true
     restart: always
 
   redis:
