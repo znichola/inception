@@ -18,6 +18,8 @@ RUN mkdir -p /script
 COPY /script/entrypoint.sh /script
 RUN chmod +x /script/entrypoint.sh
 
+COPY /sveltapp /sveltapp-backup
+
 EXPOSE 5173
 
 ENTRYPOINT ["/script/entrypoint.sh"]
@@ -25,5 +27,5 @@ CMD ["tail", "-f", "/dev/null"]
 #CMD ["npm", "run", "dev", "--", "--host"]
 
 # docker build -t node-server .
-# docker run --init --name node-server -p 420:420 node-server 
+# docker run --init --name node-server -p 420:420 node-server
 # docker exec -it node-server  zsh
