@@ -33,8 +33,34 @@ The LAMP stack is what we are asked to do:
 - [installing LEMP stack](https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mariadb-php-lemp-stack-on-debian-10)
 - [installing wordpress with LEMP](https://www.digitalocean.com/community/tutorials/how-to-install-wordpress-with-lemp-nginx-mariadb-and-php-on-debian-10)
 
+---
+
+## Quickstart
+
+- launch the vm
+- connect with ssh: `ssh znichola@localhost -p2222`
+- pull the prject and cd into it
+- run: `make`
+- after install open browser to `znichola@42.fr` to see wp site
+- `make <containter name>` to docker exec into the container to poke around
+- `make data-clean` to compeltly while all files on disk
+- `make fclean` to remove **all** containers and docker bits
+- `sudo make data-clean && make re` to wipe everything and start again from scratch
+
+---
 
 ## Commands
+
+Add port forwarding to the vmbox
+
+```
+admir         8080 8080
+ssh           2222 22
+svelte-deploy 4200 4200
+svelte-dev    5173 5173
+wordpress     442  443 - this won't work when browsing becuase
+``
+
 
 To show the mariadb database is setup correctly
 ```mysql
@@ -58,4 +84,19 @@ SELECT * FROM wp_users;
 
 
 SELECT User FROM mysql.user;
+```
+
+ftp commands
+
+```bash
+make info
+# ip adresses for the containers and env passwords
+ftp -p <wordpress ip>
+ftp> ls
+
+# uploads the makefile from the local files
+ftp> put Makefile
+
+# the ! tells ftp to run a local command, in this case ls
+ftp> !ls
 ```
