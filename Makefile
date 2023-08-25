@@ -35,8 +35,8 @@ data-clean :
 	rm -rf /home/znichola/data
 	mkdir -p /home/znichola/data/mariadb
 	mkdir -p /home/znichola/data/wordpress
-	mkdir -p /home/znichola/data/svelte-dev
-	mkdir -p /home/znichola/data/svelte-deploy
+	mkdir -p /home/znichola/data/svelte
+	mkdir -p /home/znichola/data/deploy
 	rm srcs/.env                                     $(TIDY)
 
 print-env :
@@ -59,4 +59,4 @@ $(ENV) :
 
 FORCE :
 
-.PHONY: clean up down
+.PHONY: clean fclean re up down ls ${CN} svelte-dev ip print-env data-clean

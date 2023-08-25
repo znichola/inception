@@ -25,14 +25,14 @@ volumes:
     driver: local
     name: sv
     driver_opts:
-      device: /home/znichola/data/svelte-deploy
+      device: /home/znichola/data/deploy
       type: none
       o: bind
   sv:
     driver: local
     name: sv
     driver_opts:
-      device: /home/znichola/data/svelte-dev
+      device: /home/znichola/data/svelte
       type: none
       o: bind
 
