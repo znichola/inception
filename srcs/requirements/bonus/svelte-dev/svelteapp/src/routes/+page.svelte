@@ -8,5 +8,5 @@
 </p>
 
 <footer style="position: absolute; bottom: 0; left: 0; right: 0; padding: 20px; text-align: center; font-weight: 300;">
-  Who knows really, but visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation.
+  but visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation.
 </footer>
