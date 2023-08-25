@@ -7,7 +7,7 @@ RUN apt -y update && apt -y install nginx openssl
 COPY conf/default /etc/nginx/sites-available/default
 
 EXPOSE 443/tcp
-EXPOSE 4200
+EXPOSE 4200/tcp
 
 # make the ssl certs and put them in the right place
 RUN openssl \
