@@ -6,6 +6,9 @@ RUN sed -i "s/protected-mode yes/protected-mode no/g" /etc/redis/redis.conf
 RUN sed -i "s/maxmemory <bytes>/maxmemory 64mb/g" /etc/redis/redis.conf
 RUN sed -i "s/maxmemory-policy noeviction/maxmemory-policy allkeys-lfu/g" /etc/redis/redis.conf
 
+# set comamnd prompt to indicate the container
+RUN echo 'PS1="redis \w > "' >> ~/.bashrc
+
 # Expose the default Redis port (6379)
 EXPOSE 6379
 

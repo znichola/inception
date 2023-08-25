@@ -8,6 +8,9 @@ COPY conf/vsftpd.conf /etc/vsftpd.conf
 COPY script/entrypoint.sh /script/entrypoint.sh
 RUN chmod +x /script/entrypoint.sh
 
+# set comamnd prompt to indicate the container
+RUN echo 'PS1="vsftpd \w > "' >> ~/.bashrc
+
 EXPOSE 21/tcp
 
 ENTRYPOINT ["script/entrypoint.sh"]

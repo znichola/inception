@@ -50,7 +50,7 @@ services:
       - dp:/deploy
     depends_on:
       - wordpress
-    # restart: on-failure
+    restart: always
 
   wordpress:
     container_name: wordpress
@@ -63,7 +63,7 @@ services:
       - .env
     depends_on:
       - mariadb
-    # restart: on-failure
+    restart: always
 
   mariadb:
     container_name: mariadb
@@ -73,7 +73,7 @@ services:
       - inception-net
     volumes:
       - db:/database
-    # restart: on-failure
+    restart: always
     env_file:
       - .env
 
