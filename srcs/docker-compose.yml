@@ -23,7 +23,7 @@ volumes:
       o: bind
   dp:
     driver: local
-    name: sv
+    name: dp
     driver_opts:
       device: /home/znichola/data/deploy
       type: none
