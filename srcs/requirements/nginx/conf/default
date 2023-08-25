@@ -26,3 +26,15 @@ server {
         fastcgi_param SCRIPT_FILENAME $document_root/$fastcgi_script_name;
     }
 }
+
+server {
+    listen 4200;
+    server_name sveltola.42.fr;
+
+    root /debloy;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}
