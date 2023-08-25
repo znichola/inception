@@ -1,9 +1,17 @@
 # _Inseption_
 
-A sys-admin project about setting up some basic containerised webhosting.
+A sys-admin project for setting up some containerized web services/hosting.
 
-This readme is, for now just a dump of some personal notes and links that are usefull for understanding this project.
+The LAMP stack is what we are asked to do:
 
+- **L**inux for the os
+- **E**nginx for the webserver
+- **M**ariadb for the database
+- **P**HP for dynamic processing
+
+This readme is, a dump of some personal notes and links.
+
+- [installing LEMP stack](https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mariadb-php-lemp-stack-on-debian-10)
 - [docker command](https://codenotary.com/blog/extremely-useful-docker-commands)
 - [setting up SSL on docker](https://gist.github.com/dahlsailrunner/679e6dec5fd769f30bce90447ae80081)
 - [another ssl link](https://nginx.tutorials24x7.com/blog/how-to-enable-tls-1-2-and-tls-1-3-in-nginx)
@@ -21,19 +29,6 @@ This readme is, for now just a dump of some personal notes and links that are us
 - [vsftp man](https://linux.die.net/man/5/vsftpd.conf)
 
 
-This is long a confusing, maybe this link is better and simpler
-
-The LAMP stack is what we are asked to do:
-
-**L**inux for the os
-**E**nginx for the webserver
-**M**ariadb for the database
-**P**HP for dynamic processing
-
-- [installing LEMP stack](https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mariadb-php-lemp-stack-on-debian-10)
-- [installing wordpress with LEMP](https://www.digitalocean.com/community/tutorials/how-to-install-wordpress-with-lemp-nginx-mariadb-and-php-on-debian-10)
-
----
 
 ## Quickstart
 
@@ -47,8 +42,6 @@ The LAMP stack is what we are asked to do:
 - `make fclean` to remove **all** containers and docker bits
 - `sudo make data-clean && make re` to wipe everything and start again from scratch
 
----
-
 ## Commands
 
 Add port forwarding to the vmbox
@@ -58,11 +51,11 @@ admir         8080 8080
 ssh           2222 22
 svelte-deploy 4200 4200
 svelte-dev    5173 5173
-wordpress     442  443 - this won't work when browsing becuase
-``
-
+wordpress     442  443 - this won't work when browsing becuase on mac we don't have access to hosts
+```
 
 To show the mariadb database is setup correctly
+
 ```mysql
 -- to see the different database there are
 SHOW DATABASES;
@@ -81,9 +74,6 @@ SELECT comment_author, comment_content FROM wp_comments;
 
 -- or to see everything in a table;
 SELECT * FROM wp_users;
-
-
-SELECT User FROM mysql.user;
 ```
 
 ftp commands
