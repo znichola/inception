@@ -6,7 +6,7 @@ log () {
 
 log "entrypointing into node\n"
 
-cd /root/svelteapp
+# cd /root/svelteapp
 
 if [ -e /root/svelteapp/package-lock.json ]; then
 	log "nothing for script to do, handing over\n"
@@ -24,6 +24,7 @@ log "build static site\n"
 
 npm run build
 
+rm -rf /root/deploy/*
 cp -r /root/svelteapp/build/. /root/deploy
 rm -rf /root/svelteapp/build
 log "build copied to deployment folder\n"

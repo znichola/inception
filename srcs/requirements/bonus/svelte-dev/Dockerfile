@@ -23,7 +23,7 @@ COPY /svelteapp /svelteapp-backup
 
 RUN npm install -g npm@9.8.1
 
-# WORKDIR /root/svelteapp
+WORKDIR /root/svelteapp
 
 EXPOSE 5173
 
